@@ -103,6 +103,11 @@
 		}
 		
 		function util_parseDate (format, date) {
+			// use the datapicker if available
+			// This allows for additional date formats not supported by the code below this...
+			if(typeof $.datepicker === "object" && $.datepicker !== null && typeof $.datepicker.parseDate === "function"){
+				return $.datepicker.parseDate(format,date);
+			}
                 /*
                 * Function taken to jqGrid
                 * Thanks to jqGrid 
